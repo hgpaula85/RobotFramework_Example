@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.8.2 on win32)" generated="20200427 12:16:58.407" rpa="false">
+<suite id="s1" name="Example" source="C:\Users\hgouveadepaula\PycharmProjects\RobotTask\Tests\example.robot">
+<test id="s1-t1" name="Test Case 1">
+<kw name="Open Homepage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${HOME PAGE URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20200427 12:16:59.021" level="INFO">Opening browser 'chrome' to base url 'http://automationpractice.com/index.php?id_category=11&amp;controller=category'.</msg>
+<status status="PASS" starttime="20200427 12:16:59.020" endtime="20200427 12:17:07.462"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20200427 12:17:07.463" endtime="20200427 12:17:09.674"></status>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<doc>Verifies that the current page title equals ``title``.</doc>
+<arguments>
+<arg>${TITLE}</arg>
+</arguments>
+<msg timestamp="20200427 12:17:09.682" level="INFO">Page title is 'Summer Dresses - My Store'.</msg>
+<status status="PASS" starttime="20200427 12:17:09.674" endtime="20200427 12:17:09.683"></status>
+</kw>
+<status status="PASS" starttime="20200427 12:16:59.020" endtime="20200427 12:17:09.683"></status>
+</kw>
+<kw name="Change From Grid to List">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//i[@class='icon-th-list']</arg>
+<arg>5</arg>
+</arguments>
+<status status="PASS" starttime="20200427 12:17:09.684" endtime="20200427 12:17:09.714"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//i[@class='icon-th-list']</arg>
+</arguments>
+<msg timestamp="20200427 12:17:09.715" level="INFO">Clicking element '//i[@class='icon-th-list']'.</msg>
+<status status="PASS" starttime="20200427 12:17:09.714" endtime="20200427 12:17:09.857"></status>
+</kw>
+<status status="PASS" starttime="20200427 12:17:09.683" endtime="20200427 12:17:09.858"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>${LOCATOR}</arg>
+<arg>10</arg>
+</arguments>
+<status status="PASS" starttime="20200427 12:17:09.858" endtime="20200427 12:17:09.896"></status>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<arguments>
+<arg>${LOCATOR}</arg>
+</arguments>
+<status status="PASS" starttime="20200427 12:17:09.896" endtime="20200427 12:17:10.187"></status>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<arguments>
+<arg>${LOCATOR}</arg>
+</arguments>
+<msg timestamp="20200427 12:17:10.188" level="INFO">Simulating Mouse Over on element 'xpath:/descendant::div[@class='product-container'][2]'.</msg>
+<status status="PASS" starttime="20200427 12:17:10.188" endtime="20200427 12:17:10.466"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>/descendant::a[@title='View'][2]</arg>
+<arg>3</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200427 12:17:14.336" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200427 12:17:13.539" endtime="20200427 12:17:14.336"></status>
+</kw>
+<msg timestamp="20200427 12:17:14.342" level="FAIL">Element with locator '/descendant::a[@title='View'][2]' not found.</msg>
+<status status="FAIL" starttime="20200427 12:17:10.466" endtime="20200427 12:17:14.342"></status>
+</kw>
+<status status="FAIL" starttime="20200427 12:16:59.020" endtime="20200427 12:17:14.344" critical="yes">Element with locator '/descendant::a[@title='View'][2]' not found.</status>
+</test>
+<status status="FAIL" starttime="20200427 12:16:58.412" endtime="20200427 12:17:14.347"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="Example">Example</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
