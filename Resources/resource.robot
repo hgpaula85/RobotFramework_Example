@@ -108,10 +108,15 @@ Select Products
     Wait Until Page Contains Element  css:[title=Dresses]  10
     Wait Until Element Is Enabled  xpath://div[@id='block_top_menu']/ul/li[2]/a  10
     Click Link  xpath://div[@id='block_top_menu']/ul/li[2]/a
+    Title Should Be  Dresses - My Store
+
     Wait Until Element Is Enabled  xpath://a[@class='subcategory-name'][contains(text(),'Summer Dresses')]  10
     Click Link  xpath://a[@class='subcategory-name'][contains(text(),'Summer Dresses')]
+    Title Should Be  Summer Dresses - My Store
 
-
-
-
-
+    Wait Until Element Is Enabled  (//img[@title="Printed Summer Dress"])[2]  10
+    Scroll Element Into View  (//img[@title="Printed Summer Dress"])[2]
+    Mouse Over  (//img[@title="Printed Summer Dress"])[2]
+    Wait Until Element Is Visible  (//span[contains(text(),"More")])[2]  5
+    Click Element  (//span[contains(text(),"More")])[2]
+    Title Should Be  Printed Summer Dress - My Store
