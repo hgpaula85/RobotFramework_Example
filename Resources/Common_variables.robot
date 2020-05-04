@@ -1,4 +1,5 @@
 *** Variables ***
+
 ${BROWSER}  chrome
 ${HOME PAGE URL}  http://automationpractice.com/index.php
 ${WAIT_TIME}  5
@@ -21,3 +22,4 @@ ${TITLE_MY_ACCT}  My account - My Store
 ${TITLE_DRESSES}  Dresses - My Store
 ${TITLE_DRESSES_SUMMER}  Summer Dresses - My Store
 ${TITLE_CART}  Order - My Store
+${TITLE_ORDER_CONFIRMATION}  Order confirmation - My Store

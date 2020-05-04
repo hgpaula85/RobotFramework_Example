@@ -1,6 +1,9 @@
 *** Settings ***
-Library  ..${/}Resources${/}Variables.robot
-Library  ..${/}Resources${/}Locators.robot
+Library  String
+Library  BuiltIn
+
+Resource  Common_variables.robot
+Resource  Locators.robot
 
 *** Keywords ***
 # Functions
@@ -9,6 +12,16 @@ Start Test
     ${LAST NAME}=  Generate Random String  12  [LOWER]
     ${ZIP CODE}=  Generate Random String  5  [NUMBERS]
     ${PHONE}=  Generate Random String  10  [NUMBERS]
+
+    Set Test Variable  ${FIRST NAME}
+    Set Test Variable  ${LAST NAME}
+    Set Test Variable  ${ZIP CODE}
+    Set Test Variable  ${PHONE}
+
+Finish Test
+    Sleep  5 seconds
+    Sign Out
+    Close Browser
 
 Generate Random Email
     [Documentation]  Receive string lenght and return a random_email
@@ -34,14 +47,32 @@ Go To Cart
     Click Element  ${btn_GoTo_ShopCart}
     Title Should Be  ${TITLE_CART}
 
+Select Category Dresses - Summer Dresses
+    Wait Until Element Is Visible  ${btn_Category_Dresses}  ${WAIT_TIME}
+    Mouse Over  ${btn_Category_Dresses}
+
+    Wait Until Element Is Visible  ${btn_Category_Dre_SumDresses}  ${WAIT_TIME}
+    Click Element  ${btn_Category_Dre_SumDresses}
+
+    Title Should Be  ${TITLE_DRESSES_SUMMER}
+
 Go To Login Page
     Wait Until Element Is Visible  ${btn_SignIn}  ${WAIT_TIME}
     Click Element  ${btn_SignIn}
     Title Should Be  ${TITLE_LOGIN}
 
+Go To My Account
+    Wait Until Element Is Visible  ${btn_MyAccount}  ${WAIT_TIME}
+    Click Element  ${btn_MyAccount}
+    Title Should Be  ${TITLE_MY_ACCT}
+
+//a[@title="View my customer account"]
 Select Create Account
     ${EMAIL}=  Generate Random Email  8
+    ${PASSWORD}=  Generate Random String  10  [LOWER]
+
     Set Test Variable  ${EMAIL}
+    Set Test Variable  ${PASSWORD}
 
     Wait Until Element Is Visible  ${txt_EmailCreateAcct}
     Input Text  ${txt_EmailCreateAcct}  ${EMAIL}
@@ -52,14 +83,13 @@ Select Create Account
     Title Should Be  ${TITLE_CREATE_ACCT}
 
 Register New Account
-    ${PASSWORD}=  Generate Random String  10  [LOWER]
-    Set Test Variable  ${PASSWORD}
+    Wait Until Element Is Visible  ${btn_Submit_Account}
 
     Select Radio Button  ${rad_Title}  ${rad_Title_Mrs}
     Input Text  ${txt_CustFirstName}  ${FIRST NAME}
     Input Text  ${txt_CustLastName}  ${LAST NAME}
     Input Text  ${txt_CustEmail}  ${EMAIL}
-    Input Text  ${txt_CustEmail}  ${PASSWORD}
+    Input Text  ${txt_Password}  ${PASSWORD}
 
     Select From List By Value  ${lst_BirthDate_Days}  12
     Select From List By Value  ${lst_BirthDate_Month}  3
@@ -85,6 +115,7 @@ Sign Out
     Wait Until Element Is Visible  ${btn_MyAcct_Logout}  ${WAIT_TIME}
     Click Element  ${btn_MyAcct_Logout}
     Title Should Be  ${TITLE_LOGIN}
+    Sleep  3
 
 Sign In
     Wait Until Element Is Visible  ${txt_EmailLogin}
@@ -98,22 +129,31 @@ Sign In
     Title Should Be  ${TITLE_MY_ACCT}
 
 Check Total Amount
+    [Arguments]  ${operation}  ${exp_total_amount}
     Wait Until Element Is Visible  ${lbl_Tot_Amount}  ${WAIT_TIME}
-    ${total amount}=  Get Value  ${lbl_Tot_Amount}
-    Log To Console  ${total amount}
+    ${total amount}=  Get Text  ${lbl_Tot_Amount}
+    ${total amount}=  Remove String  ${total amount}  $
+    ${total amount}=  Convert to Number  ${total amount}
+    #Log  Total amount is:  ${total amount}  and expected total amount is:  ${exp_total_amount}
+    Run Keyword If  '${operation}' == 'LESS'  Should Be True  ${total amount} < ${exp_total_amount}
+    Run Keyword If  '${operation}' == 'MORE'  Should Be True  ${total amount} > ${exp_total_amount}
 
 Summer Dresses: Select Item
-    [Arguments]  ${Grid Item}
-    Wait Until Element Is Visible  ${mo_SummerDress_Item}  ${WAIT_TIME}
+    [Arguments]  ${grid_item}
+
+    ${temp_locator}=  Catenate  SEPARATOR=  ${mo_SummerDress_Item}  ${grid_item}
+    Wait Until Element Is Visible  ${temp_locator}  ${WAIT_TIME}
     Scroll Element Into View  ${btn_Compare}
-    Mouse Over  ${mo_SummerDress_Item}
-    Wait Until Element Is Visible  ${btn_SummerDress_More}  ${WAIT_TIME}
-    Click Element  ${btn_SummerDress_More}
+    Mouse Over  ${temp_locator}
+
+    ${temp_locator}=  Catenate  SEPARATOR=  ${btn_SummerDress_More}  ${grid_item}
+    Wait Until Element Is Visible  ${temp_locator}  ${WAIT_TIME}
+    Click Element  ${temp_locator}
 
 Add Item to Shopping Cart
     [Arguments]  ${qty}  ${size}  ${color}
     Wait Until Element Is Visible  ${txt_Item_Qty}  ${WAIT_TIME}
-    Wait Until Element Is Visible  ${lst_Item_Size}  ${WAIT_TIME}
+    Wait Until Element Is Visible  ${mo_Item_Size}  ${WAIT_TIME}
     Wait Until Element Is Visible  ${color}
 
     Scroll Element Into View  ${btn_Item_AddToCart}
@@ -127,3 +167,46 @@ Add Item to Shopping Cart
 
     Wait Until Element Is Visible  ${btn_Continue_Shopping}  ${WAIT_TIME}
     Click Element  ${btn_Continue_Shopping}
+
+Finalize the Order
+    Proceed To Checkout
+    Check Address and Add Comments
+    Shipping
+    Select Payment Type
+    Confirm the Order
+
+Proceed to Checkout
+    # Summary to Address
+    Wait Until Element Is Visible  ${btn_Proceed_Checkout}
+    Click Element  ${btn_Proceed_Checkout}
+    Title Should Be  ${TITLE_CART}
+    Page Should Contain Element  ${lbl_Step3_Address}
+
+Check Address and Add Comments
+    # Address to Shipping
+    Wait Until Element Is Visible  ${btn_Proceed_Checkout}
+    Wait Until Element Is Visible  ${txt_Comments}
+    Input Text  ${txt_Comments}  This is a comment for and order.
+    Click Element  ${btn_Proceed_Checkout}
+    Title Should Be  ${TITLE_CART}
+    Page Should Contain Element  ${lbl_Step4_Shipping}
+
+Shipping
+    # Shipping to Payment
+    Wait Until Element Is Visible  ${btn_Proceed_Checkout}
+    Wait Until Element Is Visible  ${mo_Terms}
+    Select Checkbox  ${chk_Terms}
+    Click Element  ${btn_Proceed_Checkout}
+    Page Should Contain Element  ${lbl_Step5_Payment}
+
+Select Payment Type
+    # Select Payment Type
+    Wait Until Element Is Visible  ${btn_Pay_Bank_Wire}
+    Click Element  ${btn_Pay_Bank_Wire}
+
+Confirm the Order
+    # Confirm the Order
+    Wait Until Element Is Visible  ${btn_Confirm_My_Order}
+    Click Element  ${btn_Confirm_My_Order}
+    Page Should Contain Element  ${lbl_Order_Confirmation}
+    Title Should Be  ${TITLE_ORDER_CONFIRMATION}
