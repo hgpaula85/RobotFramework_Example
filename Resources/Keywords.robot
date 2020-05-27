@@ -32,7 +32,6 @@ Generate Random Email
     ${random_email}=  catenate  SEPARATOR=.  ${random_email}  com
     [Return]  ${random_email}
 
-
 # Web site standard navigation
 Open Home Page
     Open Browser  ${HOME PAGE URL}  ${BROWSER}
@@ -42,18 +41,13 @@ Open Home Page
 Go To Home Page
     Go To  ${HOME PAGE URL}
 
-Go To Cart
-    Wait Until Element Is Visible  ${btn_GoTo_ShopCart}  ${WAIT_TIME}
-    Click Element  ${btn_GoTo_ShopCart}
-    Title Should Be  ${TITLE_CART}
-
 Select Category Dresses - Summer Dresses
     Wait Until Element Is Visible  ${btn_Category_Dresses}  ${WAIT_TIME}
-    Mouse Over  ${btn_Category_Dresses}
+    Click Element  ${btn_Category_Dresses}
+    Title Should Be  ${TITLE_DRESSES}
 
     Wait Until Element Is Visible  ${btn_Category_Dre_SumDresses}  ${WAIT_TIME}
     Click Element  ${btn_Category_Dre_SumDresses}
-
     Title Should Be  ${TITLE_DRESSES_SUMMER}
 
 Go To Login Page
@@ -66,7 +60,6 @@ Go To My Account
     Click Element  ${btn_MyAccount}
     Title Should Be  ${TITLE_MY_ACCT}
 
-//a[@title="View my customer account"]
 Select Create Account
     ${EMAIL}=  Generate Random Email  8
     ${PASSWORD}=  Generate Random String  10  [LOWER]
@@ -134,7 +127,6 @@ Check Total Amount
     ${total amount}=  Get Text  ${lbl_Tot_Amount}
     ${total amount}=  Remove String  ${total amount}  $
     ${total amount}=  Convert to Number  ${total amount}
-    #Log  Total amount is:  ${total amount}  and expected total amount is:  ${exp_total_amount}
     Run Keyword If  '${operation}' == 'LESS'  Should Be True  ${total amount} < ${exp_total_amount}
     Run Keyword If  '${operation}' == 'MORE'  Should Be True  ${total amount} > ${exp_total_amount}
 
@@ -143,7 +135,8 @@ Summer Dresses: Select Item
 
     ${temp_locator}=  Catenate  SEPARATOR=  ${mo_SummerDress_Item}  ${grid_item}
     Wait Until Element Is Visible  ${temp_locator}  ${WAIT_TIME}
-    Scroll Element Into View  ${btn_Compare}
+    Wait Until Element Is Visible  ${btn_Compare}
+    Scroll Element Into View  ${temp_locator}
     Mouse Over  ${temp_locator}
 
     ${temp_locator}=  Catenate  SEPARATOR=  ${btn_SummerDress_More}  ${grid_item}
@@ -151,7 +144,7 @@ Summer Dresses: Select Item
     Click Element  ${temp_locator}
 
 Add Item to Shopping Cart
-    [Arguments]  ${qty}  ${size}  ${color}
+    [Arguments]  ${qty}  ${size}  ${color}  ${next_step}
     Wait Until Element Is Visible  ${txt_Item_Qty}  ${WAIT_TIME}
     Wait Until Element Is Visible  ${mo_Item_Size}  ${WAIT_TIME}
     Wait Until Element Is Visible  ${color}
@@ -165,8 +158,8 @@ Add Item to Shopping Cart
     Wait Until Element Is Visible  ${btn_Item_AddToCart}  ${WAIT_TIME}
     Click Element  ${btn_Item_AddToCart}
 
-    Wait Until Element Is Visible  ${btn_Continue_Shopping}  ${WAIT_TIME}
-    Click Element  ${btn_Continue_Shopping}
+    Wait Until Element Is Visible  ${next_step}  ${WAIT_TIME}
+    Click Element  ${next_step}
 
 Finalize the Order
     Proceed To Checkout
@@ -177,26 +170,28 @@ Finalize the Order
 
 Proceed to Checkout
     # Summary to Address
-    Wait Until Element Is Visible  ${btn_Proceed_Checkout}
-    Click Element  ${btn_Proceed_Checkout}
+    Wait Until Element Is Visible  ${btn_Shop_Cart_Proceed_Checkout}
+    Click Element  ${btn_Shop_Cart_Proceed_Checkout}
     Title Should Be  ${TITLE_CART}
     Page Should Contain Element  ${lbl_Step3_Address}
 
 Check Address and Add Comments
     # Address to Shipping
-    Wait Until Element Is Visible  ${btn_Proceed_Checkout}
     Wait Until Element Is Visible  ${txt_Comments}
     Input Text  ${txt_Comments}  This is a comment for and order.
-    Click Element  ${btn_Proceed_Checkout}
+
+    Wait Until Element Is Visible  ${btn_Shop_Cart_Proceed_Checkout}
+    Click Element  ${btn_Shop_Cart_Proceed_Checkout}
     Title Should Be  ${TITLE_CART}
     Page Should Contain Element  ${lbl_Step4_Shipping}
 
 Shipping
     # Shipping to Payment
-    Wait Until Element Is Visible  ${btn_Proceed_Checkout}
     Wait Until Element Is Visible  ${mo_Terms}
     Select Checkbox  ${chk_Terms}
-    Click Element  ${btn_Proceed_Checkout}
+
+    Wait Until Element Is Visible  ${btn_Shop_Cart_Proceed_Checkout}
+    Click Element  ${btn_Shop_Cart_Proceed_Checkout}
     Page Should Contain Element  ${lbl_Step5_Payment}
 
 Select Payment Type

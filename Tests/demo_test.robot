@@ -1,18 +1,27 @@
 *** Settings ***
-Documentation  My first test, just login
+Documentation
+...    This suite contains all tests necessary to buy an item.
+...    \n1. Access web site: http://automationpractice.com/index.php.
+...    \n2. Create a new account.
+...    \n3. Log in using new account created.
+...    \n4. From category “Dresses” select “Summer Dresses”.
+...    \n5. Add to shopping cart: 2 pieces from second displayed item
+...
+...    - first item: size S, white color\n- second item : size L, yellow color
+
 Library     SeleniumLibrary
 Library  String
 
+Test Teardown  Close Browser
 
 
 *** Variables ***
-${BROWSER}  chrome
-${HOME PAGE URL}  http://www.google.com
-${LOCATOR}  //ul[@class='sf-menu clearfix menu-content sf-js-enabled sf-arrows']/li[2]
-${LOCATOR2}  //li[@class='sfHover']//a[contains(text(),'Summer Dresses')]
-${total amount}  100
-${exp_total_amount}  200
-${operation}  LESS
+${BROWSER}  internetexplorer
+#${BROWSER}  chrome
+#${BROWSER}  firefox
+
+${HOME PAGE URL}  http://automationpractice.com/index.php?id_category=11&controller=category
+${BTN_CLICK}  //div[contains(@class, 'bottom-pagination')] //form[@class='compare-form']
 
 
 *** Test Cases ***
@@ -20,16 +29,10 @@ Open and close browser
     #Set Screenshot Directory  ../Reports
 
     Open Browser  ${HOME PAGE URL}  ${BROWSER}
-    Set Window Size  1449  1087
-    #Maximize Browser Window
+    Maximize Browser Window
 
-    Run Keyword If  '${operation}' == 'LESS'  Should Be True  ${total amount} < ${exp_total_amount}
+    Wait Until Element Is Visible  ${BTN_CLICK}  10
+    Click Element  ${BTN_CLICK}
 
-    Close Browser
+    Close Window
 
-*** comment ***
-    Wait Until Element Is Visible  ${LOCATOR}  5
-    Mouse Over  ${LOCATOR}
-
-    Wait Until Element Is Visible  ${LOCATOR2}  5
-    Click Element  ${LOCATOR}

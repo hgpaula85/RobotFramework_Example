@@ -9,8 +9,11 @@ ${btn_CreateAcct}=  id:SubmitCreate
 ${txt_EmailLogin}=  id:email
 ${txt_Password}=  id:passwd
 ${btn_Login}=  id:SubmitLogin
-${btn_Category_Dresses}=  //ul[@class='sf-menu clearfix menu-content sf-js-enabled sf-arrows']/li[2]
-${btn_Category_Dre_SumDresses}=  //li[@class='sfHover']//a[contains(text(),'Summer Dresses')]
+
+
+${btn_Category_Dresses}=  (//a[@class="sf-with-ul" and @title="Dresses"])[2]
+${btn_Category_Dre_SumDresses}=  //a[@class='subcategory-name'][contains(text(),'Summer Dresses')]
+
 ${btn_MyAccount}=  //a[@title="View my customer account"]
 
 # Create An Account - Personal Information
@@ -50,20 +53,19 @@ ${btn_SummerDress_More}=  (//span[contains(text(),"More")])
 
 # Products - Item Details (More)
 ${txt_Item_Qty}=  id:quantity_wanted
-
 ${mo_Item_Size}=  uniform-group_1
 ${lst_Item_Size}=  id:group_1
-
 ${btn_Item_Color_White}=  id:color_8
 ${btn_Item_Color_Yellow}=  id:color_16
 ${btn_Item_Color_Green}=  id:color_15
 ${btn_Item_AddToCart}=  //span[contains(text(),'Add to cart')]
 ${btn_Continue_Shopping}=  //span[@class='continue btn btn-default button exclusive-medium']//span[1]
-${btn_GoTo_ShopCart}=  //a[@title="View my shopping cart"]
+${btn_Proceed_Checkout}=  //span[contains(text(),'Proceed to checkout')]
+#${btn_GoTo_ShopCart}=  //b[contains(text(),'Cart')]
 
 # Shopping Cart
 ${lbl_Tot_Amount}=  //span[@id="total_price"]
-${btn_Proceed_Checkout}=  (//span[contains(text(),'Proceed to checkout')])[2]
+${btn_Shop_Cart_Proceed_Checkout}=  (//span[contains(text(),'Proceed to checkout')])[2]
 ${lbl_Step3_Address}=  //li[@class="step_current third"]
 ${txt_Comments}=  //textarea[@name='message']
 ${lbl_Step4_Shipping}=  //li[@class="step_current four"]

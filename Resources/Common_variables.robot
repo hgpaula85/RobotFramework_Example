@@ -1,6 +1,8 @@
 *** Variables ***
 
-${BROWSER}  chrome
+#${BROWSER}  firefox
+${BROWSER}  internetexplorer
+
 ${HOME PAGE URL}  http://automationpractice.com/index.php
 ${WAIT_TIME}  5
 
