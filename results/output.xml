@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1 (Python 3.7.5 on win32)" generated="20210820 21:52:47.226" rpa="false" schemaversion="2">
+<suite id="s1" name="Create Account" source="C:\Users\hgouvead\Sources\RobotFramework_Example\cases\create_account.robot">
+<test id="s1-t1" name="TC01 Create account with valid data">
+<kw name="Start test" library="Util" type="SETUP">
+<kw name="Set Results Directory" library="Util">
+<doc>Set results directory for each test</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${test_dir}</var>
+<arg>${EMPTY}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20210820 21:52:47.524" level="INFO">${test_dir} = </msg>
+<status status="PASS" starttime="20210820 21:52:47.523" endtime="20210820 21:52:47.524"/>
+</kw>
+<kw name="Get Substring" library="String">
+<var>${test_dir}</var>
+<arg>${TEST_NAME}</arg>
+<arg>0</arg>
+<arg>end=4</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<msg timestamp="20210820 21:52:47.525" level="INFO">${test_dir} = TC01</msg>
+<status status="PASS" starttime="20210820 21:52:47.525" endtime="20210820 21:52:47.525"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${screenshot_dir}</var>
+<arg>${EXECDIR}</arg>
+<arg>results</arg>
+<arg>${test_dir}</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20210820 21:52:47.525" level="INFO">${screenshot_dir} = C:\Users\hgouvead\Sources\RobotFramework_Example\results\TC01</msg>
+<status status="PASS" starttime="20210820 21:52:47.525" endtime="20210820 21:52:47.525"/>
+</kw>
+<kw name="Remove Directory" library="OperatingSystem">
+<arg>${screenshot_dir}</arg>
+<arg>recursive=True</arg>
+<doc>Removes the directory pointed to by the given ``path``.</doc>
+<msg timestamp="20210820 21:52:47.526" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\hgouvead\Sources\RobotFramework_Example\results\TC01"&gt;C:\Users\hgouvead\Sources\RobotFramework_Example\results\TC01&lt;/a&gt;' does not exist.</msg>
+<status status="PASS" starttime="20210820 21:52:47.525" endtime="20210820 21:52:47.526"/>
+</kw>
+<kw name="Set Screenshot Directory" library="SeleniumLibrary">
+<arg>${screenshot_dir}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" starttime="20210820 21:52:47.526" endtime="20210820 21:52:47.526"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${screenshot_dir}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20210820 21:52:47.526" level="INFO">${screenshot_dir} = C:\Users\hgouvead\Sources\RobotFramework_Example\results\TC01</msg>
+<status status="PASS" starttime="20210820 21:52:47.526" endtime="20210820 21:52:47.526"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${SHORT_TEST_NAME}</arg>
+<arg>${test_dir}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20210820 21:52:47.529" level="INFO">${SHORT_TEST_NAME} = TC01</msg>
+<status status="PASS" starttime="20210820 21:52:47.526" endtime="20210820 21:52:47.529"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:47.523" endtime="20210820 21:52:47.529"/>
+</kw>
+<if>
+<branch type="IF" condition="'${browser}'=='edge'">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="NOT RUN" starttime="20210820 21:52:47.529" endtime="20210820 21:52:47.529"/>
+</kw>
+<status status="NOT RUN" starttime="20210820 21:52:47.529" endtime="20210820 21:52:47.529"/>
+</branch>
+<branch type="ELSE">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>options=add_argument("--disable-popup-blocking"); add_argument("--ignore-certificate-errors")</arg>
+<arg>service_log_path=/dev/null</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210820 21:52:47.529" level="INFO">Opening browser 'chrome' to base url 'http://automationpractice.com/index.php'.</msg>
+<msg timestamp="20210820 21:52:47.532" level="INFO">Browser driver log file created to: C:/dev/null</msg>
+<status status="PASS" starttime="20210820 21:52:47.529" endtime="20210820 21:52:52.007"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:47.529" endtime="20210820 21:52:52.007"/>
+</branch>
+<status status="PASS" starttime="20210820 21:52:47.529" endtime="20210820 21:52:52.007"/>
+</if>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210820 21:52:52.008" endtime="20210820 21:52:52.126"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${FIRST_NAME}</var>
+<arg>10</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20210820 21:52:52.127" level="INFO">${FIRST_NAME} = tpcfsrdqhy</msg>
+<status status="PASS" starttime="20210820 21:52:52.126" endtime="20210820 21:52:52.127"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${LAST_NAME}</var>
+<arg>12</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20210820 21:52:52.127" level="INFO">${LAST_NAME} = viiymmexnupi</msg>
+<status status="PASS" starttime="20210820 21:52:52.127" endtime="20210820 21:52:52.127"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${ZIP_CODE}</var>
+<arg>5</arg>
+<arg>[NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20210820 21:52:52.127" level="INFO">${ZIP_CODE} = 25949</msg>
+<status status="PASS" starttime="20210820 21:52:52.127" endtime="20210820 21:52:52.127"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${PHONE}</var>
+<arg>10</arg>
+<arg>[NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20210820 21:52:52.128" level="INFO">${PHONE} = 0511367809</msg>
+<status status="PASS" starttime="20210820 21:52:52.127" endtime="20210820 21:52:52.128"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${FIRST_NAME}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20210820 21:52:52.128" level="INFO">${FIRST_NAME} = tpcfsrdqhy</msg>
+<status status="PASS" starttime="20210820 21:52:52.128" endtime="20210820 21:52:52.128"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${LAST_NAME}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20210820 21:52:52.128" level="INFO">${LAST_NAME} = viiymmexnupi</msg>
+<status status="PASS" starttime="20210820 21:52:52.128" endtime="20210820 21:52:52.128"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${ZIP_CODE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20210820 21:52:52.129" level="INFO">${ZIP_CODE} = 25949</msg>
+<status status="PASS" starttime="20210820 21:52:52.129" endtime="20210820 21:52:52.129"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${PHONE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20210820 21:52:52.129" level="INFO">${PHONE} = 0511367809</msg>
+<status status="PASS" starttime="20210820 21:52:52.129" endtime="20210820 21:52:52.129"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:47.523" endtime="20210820 21:52:52.129"/>
+</kw>
+<kw name="Generate Random Email" library="Util">
+<var>${email}</var>
+<doc>Get two names from names list, creates a random domain and returns a random email</doc>
+<kw name="File Should Exist" library="OperatingSystem">
+<arg>${names_file}</arg>
+<arg>msg=File with names is not available at \resources\variables\names.txt</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<msg timestamp="20210820 21:52:52.131" level="INFO" html="true">File '&lt;a href="file://C:\Users\hgouvead\Sources\RobotFramework_Example\resources\variables\names.txt"&gt;C:\Users\hgouvead\Sources\RobotFramework_Example\resources\variables\names.txt&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20210820 21:52:52.130" endtime="20210820 21:52:52.131"/>
+</kw>
+<kw name="Get File" library="OperatingSystem">
+<var>${lst_names}</var>
+<arg>${names_file}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20210820 21:52:52.131" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\hgouvead\Sources\RobotFramework_Example\resources\variables\names.txt"&gt;C:\Users\hgouvead\Sources\RobotFramework_Example\resources\variables\names.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20210820 21:52:52.137" level="INFO">${lst_names} = Liam
+Noah
+Oliver
+Elijah
+William
+James
+Benjamin
+Lucas
+Henry
+Alexander
+Mason
+Michael
+Ethan
+Daniel
+Jacob
+Logan
+Jackson
+Levi
+Sebastian
+Mateo
+Jack
+Owen
+Theodore
+Aiden
+Samuel
+Joseph
+John
+David
+Wyatt
+Matthew...</msg>
+<status status="PASS" starttime="20210820 21:52:52.131" endtime="20210820 21:52:52.137"/>
+</kw>
+<kw name="Split To Lines" library="String">
+<var>${lst_names}</var>
+<arg>${lst_names}</arg>
+<doc>Splits the given string to lines.</doc>
+<msg timestamp="20210820 21:52:52.139" level="INFO">1000 lines returned</msg>
+<msg timestamp="20210820 21:52:52.140" level="INFO">${lst_names} = ['Liam', 'Noah', 'Oliver', 'Elijah', 'William', 'James', 'Benjamin', 'Lucas', 'Henry', 'Alexander', 'Mason', 'Michael', 'Ethan', 'Daniel', 'Jacob', 'Logan', 'Jackson', 'Levi', 'Sebastian', 'Mateo', 'J...</msg>
+<status status="PASS" starttime="20210820 21:52:52.138" endtime="20210820 21:52:52.140"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${lst_sample}</var>
+<arg>random.sample(@{lst_names}, 2)</arg>
+<arg>random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210820 21:52:52.143" level="INFO">${lst_sample} = ['Roy', 'Ben']</msg>
+<status status="PASS" starttime="20210820 21:52:52.140" endtime="20210820 21:52:52.143"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${length}</var>
+<arg>random.randint(4, 10)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210820 21:52:52.143" level="INFO">${length} = 9</msg>
+<status status="PASS" starttime="20210820 21:52:52.143" endtime="20210820 21:52:52.143"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${domain}</var>
+<arg>${length}</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20210820 21:52:52.144" level="INFO">${domain} = bgfvzsqwv</msg>
+<status status="PASS" starttime="20210820 21:52:52.143" endtime="20210820 21:52:52.144"/>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<var>${email}</var>
+<arg>SEPARATOR=</arg>
+<arg>${lst_sample}[0]</arg>
+<arg>.</arg>
+<arg>${lst_sample}[1]</arg>
+<arg>@</arg>
+<arg>${domain}</arg>
+<arg>.</arg>
+<arg>com</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<msg timestamp="20210820 21:52:52.144" level="INFO">${email} = Roy.Ben@bgfvzsqwv.com</msg>
+<status status="PASS" starttime="20210820 21:52:52.144" endtime="20210820 21:52:52.144"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${email}</var>
+<arg>${email}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20210820 21:52:52.145" level="INFO">${email} = roy.ben@bgfvzsqwv.com</msg>
+<status status="PASS" starttime="20210820 21:52:52.144" endtime="20210820 21:52:52.145"/>
+</kw>
+<msg timestamp="20210820 21:52:52.145" level="INFO">${email} = roy.ben@bgfvzsqwv.com</msg>
+<status status="PASS" starttime="20210820 21:52:52.130" endtime="20210820 21:52:52.145"/>
+</kw>
+<kw name="Open Login Page" library="Home">
+<kw name="Wait and click element" library="Util">
+<arg>${btn_sign_in}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:52.147" endtime="20210820 21:52:52.171"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210820 21:52:52.171" level="INFO">Clicking element '//header//a[@title = 'Log in to your customer account']'.</msg>
+<status status="PASS" starttime="20210820 21:52:52.171" endtime="20210820 21:52:53.447"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:52.146" endtime="20210820 21:52:53.447"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:52.145" endtime="20210820 21:52:53.447"/>
+</kw>
+<kw name="Click Create Account" library="Login">
+<arg>${email}</arg>
+<kw name="Wait login page is ready" library="Login">
+<kw name="Wait Until Elements Are Visible" library="Util">
+<arg>${txt_create_acct_email}</arg>
+<arg>${btn_create_acct}</arg>
+<arg>${txt_login_email}</arg>
+<arg>${txt_login_password}</arg>
+<arg>${btn_login}</arg>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{lst_elements}</value>
+<iter>
+<var name="${element}">email_create</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:53.455" endtime="20210820 21:52:53.498"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:53.455" endtime="20210820 21:52:53.498"/>
+</iter>
+<iter>
+<var name="${element}">SubmitCreate</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:53.498" endtime="20210820 21:52:53.522"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:53.498" endtime="20210820 21:52:53.522"/>
+</iter>
+<iter>
+<var name="${element}">email</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:53.523" endtime="20210820 21:52:53.547"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:53.522" endtime="20210820 21:52:53.547"/>
+</iter>
+<iter>
+<var name="${element}">passwd</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:53.547" endtime="20210820 21:52:53.568"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:53.547" endtime="20210820 21:52:53.568"/>
+</iter>
+<iter>
+<var name="${element}">SubmitLogin</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:53.568" endtime="20210820 21:52:53.586"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:53.568" endtime="20210820 21:52:53.586"/>
+</iter>
+<status status="PASS" starttime="20210820 21:52:53.454" endtime="20210820 21:52:53.586"/>
+</for>
+<status status="PASS" starttime="20210820 21:52:53.452" endtime="20210820 21:52:53.586"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:53.451" endtime="20210820 21:52:53.586"/>
+</kw>
+<kw name="Wait and write into input element" library="Util">
+<arg>${txt_create_acct_email}</arg>
+<arg>${email}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:53.587" endtime="20210820 21:52:53.601"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20210820 21:52:53.601" endtime="20210820 21:52:53.880"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${item}</arg>
+<arg>${text}</arg>
+<arg>clear=True</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210820 21:52:53.882" level="INFO">Typing text 'roy.ben@bgfvzsqwv.com' into text field 'email_create'.</msg>
+<status status="PASS" starttime="20210820 21:52:53.880" endtime="20210820 21:52:53.964"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:53.586" endtime="20210820 21:52:53.965"/>
+</kw>
+<kw name="Wait and click element" library="Util">
+<arg>${btn_create_acct}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:53.966" endtime="20210820 21:52:53.986"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210820 21:52:53.986" level="INFO">Clicking element 'SubmitCreate'.</msg>
+<status status="PASS" starttime="20210820 21:52:53.986" endtime="20210820 21:52:54.029"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:53.965" endtime="20210820 21:52:54.029"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:53.448" endtime="20210820 21:52:54.029"/>
+</kw>
+<kw name="Register New Account" library="CreateAccount">
+<kw name="Wait Create Account page is ready" library="CreateAccount">
+<kw name="Wait Until Elements Are Visible" library="Util">
+<arg>${rad_title}</arg>
+<arg>${txt_pers_info_first_name}</arg>
+<arg>${txt_pers_info_last_name}</arg>
+<arg>${txt_email}</arg>
+<arg>${txt_password}</arg>
+<arg>${lst_birth_date_day}</arg>
+<arg>${lst_birth_date_month}</arg>
+<arg>${lst_birth_date_year}</arg>
+<arg>${chk_newsletter}</arg>
+<arg>${chk_special_offers}</arg>
+<arg>${txt_address_first_name}</arg>
+<arg>${txt_address_last_name}</arg>
+<arg>${txt_address_company}</arg>
+<arg>${txt_address}</arg>
+<arg>${txt_address_line_2}</arg>
+<arg>${txt_address_city}</arg>
+<arg>${lst_address_state}</arg>
+<arg>${txt_address_zip}</arg>
+<arg>${lst_address_country}</arg>
+<arg>${txt_address_add_info}</arg>
+<arg>${txt_address_home_phone}</arg>
+<arg>${txt_address_mobile_phone}</arg>
+<arg>${txt_address_alias}</arg>
+<arg>${btn_register}</arg>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{lst_elements}</value>
+<iter>
+<var name="${element}">id_gender</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:54.032" endtime="20210820 21:52:55.389"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:54.032" endtime="20210820 21:52:55.389"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'customer_firstname']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.389" endtime="20210820 21:52:55.416"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.389" endtime="20210820 21:52:55.417"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'customer_lastname']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.417" endtime="20210820 21:52:55.438"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.417" endtime="20210820 21:52:55.438"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'email']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.438" endtime="20210820 21:52:55.458"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.438" endtime="20210820 21:52:55.459"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'passwd']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.459" endtime="20210820 21:52:55.479"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.459" endtime="20210820 21:52:55.479"/>
+</iter>
+<iter>
+<var name="${element}">//select[@id = 'days']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.480" endtime="20210820 21:52:55.498"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.479" endtime="20210820 21:52:55.498"/>
+</iter>
+<iter>
+<var name="${element}">//select[@id = 'months']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.498" endtime="20210820 21:52:55.519"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.498" endtime="20210820 21:52:55.519"/>
+</iter>
+<iter>
+<var name="${element}">//select[@id = 'years']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.519" endtime="20210820 21:52:55.538"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.519" endtime="20210820 21:52:55.538"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'newsletter']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.538" endtime="20210820 21:52:55.558"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.538" endtime="20210820 21:52:55.559"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'optin']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.560" endtime="20210820 21:52:55.580"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.559" endtime="20210820 21:52:55.580"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'firstname']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.580" endtime="20210820 21:52:55.600"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.580" endtime="20210820 21:52:55.600"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'lastname']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.600" endtime="20210820 21:52:55.621"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.600" endtime="20210820 21:52:55.621"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'company']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.621" endtime="20210820 21:52:55.645"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.621" endtime="20210820 21:52:55.645"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'address1']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.646" endtime="20210820 21:52:55.665"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.645" endtime="20210820 21:52:55.665"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'address2']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.665" endtime="20210820 21:52:55.685"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.665" endtime="20210820 21:52:55.685"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'city']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.685" endtime="20210820 21:52:55.705"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.685" endtime="20210820 21:52:55.705"/>
+</iter>
+<iter>
+<var name="${element}">//div[@id = 'uniform-id_state']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.705" endtime="20210820 21:52:55.944"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.705" endtime="20210820 21:52:55.944"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'postcode']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.944" endtime="20210820 21:52:55.965"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.944" endtime="20210820 21:52:55.965"/>
+</iter>
+<iter>
+<var name="${element}">id:uniform-id_country</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.965" endtime="20210820 21:52:55.983"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.965" endtime="20210820 21:52:55.983"/>
+</iter>
+<iter>
+<var name="${element}">//textarea[@id = 'other']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:55.983" endtime="20210820 21:52:56.001"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:55.983" endtime="20210820 21:52:56.001"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'phone']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:56.001" endtime="20210820 21:52:56.019"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:56.001" endtime="20210820 21:52:56.019"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'phone_mobile']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:56.019" endtime="20210820 21:52:56.037"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:56.019" endtime="20210820 21:52:56.037"/>
+</iter>
+<iter>
+<var name="${element}">//input[@id = 'alias']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:56.037" endtime="20210820 21:52:56.056"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:56.037" endtime="20210820 21:52:56.056"/>
+</iter>
+<iter>
+<var name="${element}">//button[@id = 'submitAccount']</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:56.056" endtime="20210820 21:52:56.076"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:56.056" endtime="20210820 21:52:56.076"/>
+</iter>
+<status status="PASS" starttime="20210820 21:52:54.032" endtime="20210820 21:52:56.076"/>
+</for>
+<status status="PASS" starttime="20210820 21:52:54.030" endtime="20210820 21:52:56.076"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:54.030" endtime="20210820 21:52:56.076"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${gender}</var>
+<arg>random.randint(1,2)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210820 21:52:56.076" level="INFO">${gender} = 2</msg>
+<status status="PASS" starttime="20210820 21:52:56.076" endtime="20210820 21:52:56.076"/>
+</kw>
+<kw name="Select Radio Button" library="SeleniumLibrary">
+<arg>${rad_title}</arg>
+<arg>${gender}</arg>
+<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
+<msg timestamp="20210820 21:52:56.077" level="INFO">Selecting '2' from radio button 'id_gender'.</msg>
+<status status="PASS" starttime="20210820 21:52:56.077" endtime="20210820 21:52:56.123"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{lst_first}</var>
+<arg>${txt_pers_info_first_name}</arg>
+<arg>${txt_address_first_name}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20210820 21:52:56.124" level="INFO">@{lst_first} = [ //input[@id = 'customer_firstname'] | //input[@id = 'firstname'] ]</msg>
+<status status="PASS" starttime="20210820 21:52:56.123" endtime="20210820 21:52:56.124"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{lst_last}</var>
+<arg>${txt_pers_info_last_name}</arg>
+<arg>${txt_address_last_name}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20210820 21:52:56.124" level="INFO">@{lst_last} = [ //input[@id = 'customer_lastname'] | //input[@id = 'lastname'] ]</msg>
+<status status="PASS" starttime="20210820 21:52:56.124" endtime="20210820 21:52:56.124"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>${lst_first}</value>
+<value>${lst_last}</value>
+<iter>
+<var name="${element}">["//input[@id = 'customer_firstname']", "//input[@id = 'firstname']"]</var>
+<kw name="Select random name" library="Util">
+<var>${name}</var>
+<kw name="File Should Exist" library="OperatingSystem">
+<arg>${names_file}</arg>
+<arg>msg=File with names is not available at \resources\variables\names.txt</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<msg timestamp="20210820 21:52:56.125" level="INFO" html="true">File '&lt;a href="file://C:\Users\hgouvead\Sources\RobotFramework_Example\resources\variables\names.txt"&gt;C:\Users\hgouvead\Sources\RobotFramework_Example\resources\variables\names.txt&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20210820 21:52:56.125" endtime="20210820 21:52:56.125"/>
+</kw>
+<kw name="Get File" library="OperatingSystem">
+<var>${lst_names}</var>
+<arg>${names_file}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20210820 21:52:56.125" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\hgouvead\Sources\RobotFramework_Example\resources\variables\names.txt"&gt;C:\Users\hgouvead\Sources\RobotFramework_Example\resources\variables\names.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20210820 21:52:56.126" level="INFO">${lst_names} = Liam
+Noah
+Oliver
+Elijah
+William
+James
+Benjamin
+Lucas
+Henry
+Alexander
+Mason
+Michael
+Ethan
+Daniel
+Jacob
+Logan
+Jackson
+Levi
+Sebastian
+Mateo
+Jack
+Owen
+Theodore
+Aiden
+Samuel
+Joseph
+John
+David
+Wyatt
+Matthew...</msg>
+<status status="PASS" starttime="20210820 21:52:56.125" endtime="20210820 21:52:56.126"/>
+</kw>
+<kw name="Split To Lines" library="String">
+<var>${lst_names}</var>
+<arg>${lst_names}</arg>
+<doc>Splits the given string to lines.</doc>
+<msg timestamp="20210820 21:52:56.126" level="INFO">1000 lines returned</msg>
+<msg timestamp="20210820 21:52:56.126" level="INFO">${lst_names} = ['Liam', 'Noah', 'Oliver', 'Elijah', 'William', 'James', 'Benjamin', 'Lucas', 'Henry', 'Alexander', 'Mason', 'Michael', 'Ethan', 'Daniel', 'Jacob', 'Logan', 'Jackson', 'Levi', 'Sebastian', 'Mateo', 'J...</msg>
+<status status="PASS" starttime="20210820 21:52:56.126" endtime="20210820 21:52:56.126"/>
+</kw>
+<kw name="Select random element from list" library="Util">
+<var>${element}</var>
+<arg>${lst_names}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${lst_sample}</var>
+<arg>random.sample(@{list}, 1)</arg>
+<arg>random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210820 21:52:56.129" level="INFO">${lst_sample} = ['Ephraim']</msg>
+<status status="PASS" starttime="20210820 21:52:56.127" endtime="20210820 21:52:56.129"/>
+</kw>
+<msg timestamp="20210820 21:52:56.129" level="INFO">${element} = Ephraim</msg>
+<status status="PASS" starttime="20210820 21:52:56.127" endtime="20210820 21:52:56.129"/>
+</kw>
+<msg timestamp="20210820 21:52:56.129" level="INFO">${name} = Ephraim</msg>
+<status status="PASS" starttime="20210820 21:52:56.124" endtime="20210820 21:52:56.129"/>
+</kw>
+<kw name="Wait and write into input element" library="Util">
+<arg>${element}[0]</arg>
+<arg>${name}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:56.130" endtime="20210820 21:52:56.145"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20210820 21:52:56.145" endtime="20210820 21:52:56.414"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${item}</arg>
+<arg>${text}</arg>
+<arg>clear=True</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210820 21:52:56.415" level="INFO">Typing text 'Ephraim' into text field '//input[@id = 'customer_firstname']'.</msg>
+<status status="PASS" starttime="20210820 21:52:56.414" endtime="20210820 21:52:56.535"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:56.129" endtime="20210820 21:52:56.535"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210820 21:52:59.537" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20210820 21:52:56.536" endtime="20210820 21:52:59.537"/>
+</kw>
+<kw name="Wait and write into input element" library="Util">
+<arg>${element}[1]</arg>
+<arg>${name}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:59.538" endtime="20210820 21:52:59.552"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20210820 21:52:59.553" endtime="20210820 21:52:59.840"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${item}</arg>
+<arg>${text}</arg>
+<arg>clear=True</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210820 21:52:59.842" level="INFO">Typing text 'Ephraim' into text field '//input[@id = 'firstname']'.</msg>
+<status status="PASS" starttime="20210820 21:52:59.841" endtime="20210820 21:52:59.949"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:59.537" endtime="20210820 21:52:59.949"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:56.124" endtime="20210820 21:52:59.949"/>
+</iter>
+<iter>
+<var name="${element}">["//input[@id = 'customer_lastname']", "//input[@id = 'lastname']"]</var>
+<kw name="Select random name" library="Util">
+<var>${name}</var>
+<kw name="File Should Exist" library="OperatingSystem">
+<arg>${names_file}</arg>
+<arg>msg=File with names is not available at \resources\variables\names.txt</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<msg timestamp="20210820 21:52:59.950" level="INFO" html="true">File '&lt;a href="file://C:\Users\hgouvead\Sources\RobotFramework_Example\resources\variables\names.txt"&gt;C:\Users\hgouvead\Sources\RobotFramework_Example\resources\variables\names.txt&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20210820 21:52:59.950" endtime="20210820 21:52:59.950"/>
+</kw>
+<kw name="Get File" library="OperatingSystem">
+<var>${lst_names}</var>
+<arg>${names_file}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20210820 21:52:59.951" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\hgouvead\Sources\RobotFramework_Example\resources\variables\names.txt"&gt;C:\Users\hgouvead\Sources\RobotFramework_Example\resources\variables\names.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20210820 21:52:59.951" level="INFO">${lst_names} = Liam
+Noah
+Oliver
+Elijah
+William
+James
+Benjamin
+Lucas
+Henry
+Alexander
+Mason
+Michael
+Ethan
+Daniel
+Jacob
+Logan
+Jackson
+Levi
+Sebastian
+Mateo
+Jack
+Owen
+Theodore
+Aiden
+Samuel
+Joseph
+John
+David
+Wyatt
+Matthew...</msg>
+<status status="PASS" starttime="20210820 21:52:59.951" endtime="20210820 21:52:59.951"/>
+</kw>
+<kw name="Split To Lines" library="String">
+<var>${lst_names}</var>
+<arg>${lst_names}</arg>
+<doc>Splits the given string to lines.</doc>
+<msg timestamp="20210820 21:52:59.951" level="INFO">1000 lines returned</msg>
+<msg timestamp="20210820 21:52:59.952" level="INFO">${lst_names} = ['Liam', 'Noah', 'Oliver', 'Elijah', 'William', 'James', 'Benjamin', 'Lucas', 'Henry', 'Alexander', 'Mason', 'Michael', 'Ethan', 'Daniel', 'Jacob', 'Logan', 'Jackson', 'Levi', 'Sebastian', 'Mateo', 'J...</msg>
+<status status="PASS" starttime="20210820 21:52:59.951" endtime="20210820 21:52:59.952"/>
+</kw>
+<kw name="Select random element from list" library="Util">
+<var>${element}</var>
+<arg>${lst_names}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${lst_sample}</var>
+<arg>random.sample(@{list}, 1)</arg>
+<arg>random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210820 21:52:59.954" level="INFO">${lst_sample} = ['Darren']</msg>
+<status status="PASS" starttime="20210820 21:52:59.952" endtime="20210820 21:52:59.954"/>
+</kw>
+<msg timestamp="20210820 21:52:59.954" level="INFO">${element} = Darren</msg>
+<status status="PASS" starttime="20210820 21:52:59.952" endtime="20210820 21:52:59.954"/>
+</kw>
+<msg timestamp="20210820 21:52:59.954" level="INFO">${name} = Darren</msg>
+<status status="PASS" starttime="20210820 21:52:59.950" endtime="20210820 21:52:59.954"/>
+</kw>
+<kw name="Wait and write into input element" library="Util">
+<arg>${element}[0]</arg>
+<arg>${name}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:52:59.955" endtime="20210820 21:52:59.977"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20210820 21:52:59.978" endtime="20210820 21:53:00.263"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${item}</arg>
+<arg>${text}</arg>
+<arg>clear=True</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210820 21:53:00.266" level="INFO">Typing text 'Darren' into text field '//input[@id = 'customer_lastname']'.</msg>
+<status status="PASS" starttime="20210820 21:53:00.264" endtime="20210820 21:53:00.329"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:59.954" endtime="20210820 21:53:00.329"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210820 21:53:03.334" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20210820 21:53:00.330" endtime="20210820 21:53:03.334"/>
+</kw>
+<kw name="Wait and write into input element" library="Util">
+<arg>${element}[1]</arg>
+<arg>${name}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210820 21:53:03.337" endtime="20210820 21:53:03.353"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${item}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20210820 21:53:03.353" endtime="20210820 21:53:03.635"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${item}</arg>
+<arg>${text}</arg>
+<arg>clear=True</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210820 21:53:03.638" level="INFO">Typing text 'Darren' into text field '//input[@id = 'lastname']'.</msg>
+<status status="PASS" starttime="20210820 21:53:03.636" endtime="20210820 21:53:03.704"/>
+</kw>
+<status status="PASS" starttime="20210820 21:53:03.335" endtime="20210820 21:53:03.704"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:59.949" endtime="20210820 21:53:03.704"/>
+</iter>
+<status status="PASS" starttime="20210820 21:52:56.124" endtime="20210820 21:53:03.704"/>
+</for>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${txt_password}</arg>
+<arg>Password1</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20210820 21:53:03.705" level="INFO">Typing password into text field '//input[@id = 'passwd']'.</msg>
+<msg timestamp="20210820 21:53:03.732" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20210820 21:53:03.768" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20210820 21:53:03.704" endtime="20210820 21:53:03.768"/>
+</kw>
+<for flavor="IN">
+<var>${list}</var>
+<value>${lst_birth_date_day}</value>
+<value>${lst_birth_date_month}</value>
+<value>${lst_birth_date_year}</value>
+<iter>
+<var name="${list}">//select[@id = 'days']</var>
+<kw name="Select Random From List by Label" library="Util">
+<arg>${list}</arg>
+<arg>remove_first=${TRUE}</arg>
+<kw name="Get List Items" library="SeleniumLibrary">
+<var>${lst_label}</var>
+<arg>${list_locator}</arg>
+<doc>Returns all labels or values of selection list ``locator``.</doc>
+<msg timestamp="20210820 21:53:04.106" level="INFO">${lst_label} = ['-', '1  ', '2  ', '3  ', '4  ', '5  ', '6  ', '7  ', '8  ', '9  ', '10  ', '11  ', '12  ', '13  ', '14  ', '15  ', '16  ', '17  ', '18  ', '19  ', '20  ', '21  ', '22  ', '23  ', '24  ', '25  ', '26...</msg>
+<status status="PASS" starttime="20210820 21:53:03.769" endtime="20210820 21:53:04.106"/>
+</kw>
+<if>
+<branch type="IF" condition="${remove_first}">
+<kw name="Remove From List" library="Collections">
+<var>${item}</var>
+<arg>${lst_label}</arg>
+<arg>0</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20210820 21:53:04.107" level="INFO">${item} = -</msg>
+<status status="PASS" starttime="20210820 21:53:04.107" endtime="20210820 21:53:04.107"/>
+</kw>
+<status status="PASS" starttime="20210820 21:53:04.106" endtime="20210820 21:53:04.107"/>
+</branch>
+<status status="PASS" starttime="20210820 21:53:04.106" endtime="20210820 21:53:04.107"/>
+</if>
+<kw name="Select random element from list" library="Util">
+<var>${label}</var>
+<arg>${lst_label}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${lst_sample}</var>
+<arg>random.sample(@{list}, 1)</arg>
+<arg>random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210820 21:53:04.108" level="INFO">${lst_sample} = ['18  ']</msg>
+<status status="PASS" starttime="20210820 21:53:04.107" endtime="20210820 21:53:04.108"/>
+</kw>
+<msg timestamp="20210820 21:53:04.108" level="INFO">${label} = 18  </msg>
+<status status="PASS" starttime="20210820 21:53:04.107" endtime="20210820 21:53:04.108"/>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<arg>${list_locator}</arg>
+<arg>${label}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20210820 21:53:04.108" level="INFO">Selecting options from selection list '//select[@id = 'days']' by label 18  .</msg>
+<status status="PASS" starttime="20210820 21:53:04.108" endtime="20210820 21:53:04.176"/>
+</kw>
+<status status="PASS" starttime="20210820 21:53:03.769" endtime="20210820 21:53:04.176"/>
+</kw>
+<status status="PASS" starttime="20210820 21:53:03.768" endtime="20210820 21:53:04.176"/>
+</iter>
+<iter>
+<var name="${list}">//select[@id = 'months']</var>
+<kw name="Select Random From List by Label" library="Util">
+<arg>${list}</arg>
+<arg>remove_first=${TRUE}</arg>
+<kw name="Get List Items" library="SeleniumLibrary">
+<var>${lst_label}</var>
+<arg>${list_locator}</arg>
+<doc>Returns all labels or values of selection list ``locator``.</doc>
+<msg timestamp="20210820 21:53:04.325" level="INFO">${lst_label} = ['-', 'January ', 'February ', 'March ', 'April ', 'May ', 'June ', 'July ', 'August ', 'September ', 'October ', 'November ', 'December ']</msg>
+<status status="PASS" starttime="20210820 21:53:04.177" endtime="20210820 21:53:04.325"/>
+</kw>
+<if>
+<branch type="IF" condition="${remove_first}">
+<kw name="Remove From List" library="Collections">
+<var>${item}</var>
+<arg>${lst_label}</arg>
+<arg>0</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20210820 21:53:04.326" level="INFO">${item} = -</msg>
+<status status="PASS" starttime="20210820 21:53:04.325" endtime="20210820 21:53:04.326"/>
+</kw>
+<status status="PASS" starttime="20210820 21:53:04.325" endtime="20210820 21:53:04.326"/>
+</branch>
+<status status="PASS" starttime="20210820 21:53:04.325" endtime="20210820 21:53:04.326"/>
+</if>
+<kw name="Select random element from list" library="Util">
+<var>${label}</var>
+<arg>${lst_label}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${lst_sample}</var>
+<arg>random.sample(@{list}, 1)</arg>
+<arg>random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210820 21:53:04.326" level="INFO">${lst_sample} = ['March ']</msg>
+<status status="PASS" starttime="20210820 21:53:04.326" endtime="20210820 21:53:04.326"/>
+</kw>
+<msg timestamp="20210820 21:53:04.327" level="INFO">${label} = March </msg>
+<status status="PASS" starttime="20210820 21:53:04.326" endtime="20210820 21:53:04.327"/>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<arg>${list_locator}</arg>
+<arg>${label}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20210820 21:53:04.327" level="INFO">Selecting options from selection list '//select[@id = 'months']' by label March .</msg>
+<status status="PASS" starttime="20210820 21:53:04.327" endtime="20210820 21:53:04.394"/>
+</kw>
+<status status="PASS" starttime="20210820 21:53:04.177" endtime="20210820 21:53:04.394"/>
+</kw>
+<status status="PASS" starttime="20210820 21:53:04.177" endtime="20210820 21:53:04.394"/>
+</iter>
+<iter>
+<var name="${list}">//select[@id = 'years']</var>
+<kw name="Select Random From List by Label" library="Util">
+<arg>${list}</arg>
+<arg>remove_first=${TRUE}</arg>
+<kw name="Get List Items" library="SeleniumLibrary">
+<var>${lst_label}</var>
+<arg>${list_locator}</arg>
+<doc>Returns all labels or values of selection list ``locator``.</doc>
+<msg timestamp="20210820 21:53:05.564" level="INFO">${lst_label} = ['-', '2021  ', '2020  ', '2019  ', '2018  ', '2017  ', '2016  ', '2015  ', '2014  ', '2013  ', '2012  ', '2011  ', '2010  ', '2009  ', '2008  ', '2007  ', '2006  ', '2005  ', '2004  ', '2003  ', '200...</msg>
+<status status="PASS" starttime="20210820 21:53:04.395" endtime="20210820 21:53:05.564"/>
+</kw>
+<if>
+<branch type="IF" condition="${remove_first}">
+<kw name="Remove From List" library="Collections">
+<var>${item}</var>
+<arg>${lst_label}</arg>
+<arg>0</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20210820 21:53:05.565" level="INFO">${item} = -</msg>
+<status status="PASS" starttime="20210820 21:53:05.564" endtime="20210820 21:53:05.565"/>
+</kw>
+<status status="PASS" starttime="20210820 21:53:05.564" endtime="20210820 21:53:05.565"/>
+</branch>
+<status status="PASS" starttime="20210820 21:53:05.564" endtime="20210820 21:53:05.565"/>
+</if>
+<kw name="Select random element from list" library="Util">
+<var>${label}</var>
+<arg>${lst_label}</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${lst_sample}</var>
+<arg>random.sample(@{list}, 1)</arg>
+<arg>random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210820 21:53:05.566" level="INFO">${lst_sample} = ['1971  ']</msg>
+<status status="PASS" starttime="20210820 21:53:05.565" endtime="20210820 21:53:05.566"/>
+</kw>
+<msg timestamp="20210820 21:53:05.566" level="INFO">${label} = 1971  </msg>
+<status status="PASS" starttime="20210820 21:53:05.565" endtime="20210820 21:53:05.566"/>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<arg>${list_locator}</arg>
+<arg>${label}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20210820 21:53:05.566" level="INFO">Selecting options from selection list '//select[@id = 'years']' by label 1971  .</msg>
+<status status="PASS" starttime="20210820 21:53:05.566" endtime="20210820 21:53:05.630"/>
+</kw>
+<status status="PASS" starttime="20210820 21:53:04.394" endtime="20210820 21:53:05.630"/>
+</kw>
+<status status="PASS" starttime="20210820 21:53:04.394" endtime="20210820 21:53:05.630"/>
+</iter>
+<status status="PASS" starttime="20210820 21:53:03.768" endtime="20210820 21:53:05.630"/>
+</for>
+<kw name="Sleep" library="BuiltIn">
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210820 21:53:15.634" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20210820 21:53:05.630" endtime="20210820 21:53:15.634"/>
+</kw>
+<status status="PASS" starttime="20210820 21:52:54.030" endtime="20210820 21:53:15.635"/>
+</kw>
+<kw name="Stop Test" library="Util" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210820 21:53:15.638" endtime="20210820 21:53:17.805"/>
+</kw>
+<status status="PASS" starttime="20210820 21:53:15.637" endtime="20210820 21:53:17.805"/>
+</kw>
+<doc>Successfully create an account with valid data
+
+Expected: New account should be created</doc>
+<tag>CreateAccount</tag>
+<tag>Sanity</tag>
+<status status="PASS" starttime="20210820 21:52:47.522" endtime="20210820 21:53:17.806"/>
+</test>
+<doc>Create account tests with valid and invalid data</doc>
+<status status="PASS" starttime="20210820 21:52:47.228" endtime="20210820 21:53:17.810"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">CreateAccount</stat>
+<stat pass="1" fail="0" skip="0">Sanity</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Create Account">Create Account</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
