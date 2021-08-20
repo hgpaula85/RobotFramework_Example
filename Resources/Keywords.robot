@@ -51,8 +51,8 @@ Select Category Dresses - Summer Dresses
     Title Should Be  ${TITLE_DRESSES_SUMMER}
 
 Go To Login Page
-    Wait Until Element Is Visible  ${btn_SignIn}  ${WAIT_TIME}
-    Click Element  ${btn_SignIn}
+    Wait Until Element Is Visible  ${btn_sign_in}  ${WAIT_TIME}
+    Click Element  ${btn_sign_in}
     Title Should Be  ${TITLE_LOGIN}
 
 Go To My Account

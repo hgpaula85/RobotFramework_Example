@@ -1,11 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
 Resource  .${/}Common_variables.robot
-
-
-*** Variables ***
-${page_title}=  My Store
-${btn_SignIn}=  css=.login
+Resource    .${/}Landing_locators.robot
 
 
 *** Keywords ***
@@ -14,5 +10,5 @@ Open Home Page
     Maximize Browser Window
 
 Sign In
-    Wait Until Element Is Visible  ${btn_SignIn}  ${WAIT_TIME}
-    Click Element  ${btn_SignIn}
+    Wait Until Element Is Visible  ${btn_sign_in}  ${WAIT_TIME}
+    Click Element  ${btn_sign_in}

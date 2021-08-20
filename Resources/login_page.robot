@@ -8,7 +8,7 @@ Resource  .${/}Common_variables.robot
 ${page_title}=  My Store
 
 # Buttons and clickable elements
-${btn_SignIn}=  css=.login
+${btn_sign_in}=  css=.login
 ${btn_CreateAcct}=  id:SubmitCreate
 ${btn_Login}=  id:SubmitLogin
 ${btn_ForgotPasswd}=  xpath=//a[@title="Recover your forgotten password"]

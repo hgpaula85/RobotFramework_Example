@@ -1,7 +1,7 @@
 *** Variables ***
 
 # Home Page
-${btn_SignIn}=  css=.login
+${btn_sign_in}=  css=.login
 
 # Login Page
 ${txt_EmailCreateAcct}=  id:email_create
